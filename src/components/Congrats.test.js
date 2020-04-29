@@ -2,6 +2,9 @@ import Enzyme, { shallow } from "enzyme";
 import React from "react";
 import EnzymeAdapter from "enzyme-adapter-react-16";
 import Congrats from "./Congrats";
+import { getByAttr, checkProps } from "../../test/testUtils";
+
+const defaultProps = { success: false };
 
 Enzyme.configure({
   adapter: new EnzymeAdapter(),
@@ -13,19 +16,9 @@ Enzyme.configure({
  * returns {shallowWrapper} returns a shallow version of component
  */
 const setup = (props = {}) => {
+  props = { ...defaultProps, ...props };
   const wrapper = shallow(<Congrats {...props} />);
   return wrapper;
-};
-/**
- * finds attribute in wrapped component and returns it
- * @function
- * @param {shallowWrapper} wrapper-  containing the component
- * @param {string} val - value to be searched
- * @returns {jsxElement}
- */
-const getByAttr = (wrapper, val) => {
-  const element = wrapper.find(`[test-data="${val}"]`);
-  return element;
 };
 
 test("rendered without error", () => {
@@ -42,4 +35,9 @@ test("does not render when usccess false", () => {
   const wrapper = setup({ success: false });
   const msg = getByAttr(wrapper, "component-msg");
   expect(msg.length).toBe(0);
+});
+
+test("does not throw error on expected props", () => {
+  const expectedProps = { success: true };
+  checkProps(Congrats, expectedProps);
 });
