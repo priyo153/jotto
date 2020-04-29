@@ -1,14 +1,10 @@
-import Enzyme, { shallow } from "enzyme";
+import { shallow } from "enzyme";
 import React from "react";
-import EnzymeAdapter from "enzyme-adapter-react-16";
 import Congrats from "./Congrats";
 import { getByAttr, checkProps } from "../../test/testUtils";
 
 const defaultProps = { success: false };
 
-Enzyme.configure({
-  adapter: new EnzymeAdapter(),
-});
 /**
  * sets up wrapper object
  * @function
