@@ -5,7 +5,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <GuessedWords />
+        <GuessedWords guessedWords={[{ guessedWord: "train", count: 3 }]} />
       </div>
     );
   }

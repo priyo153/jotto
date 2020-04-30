@@ -38,4 +38,28 @@ describe("there are no words guessed", () => {
     expect(instructions.text().length).not.toBe(0);
   });
 });
-describe("there are words guessed", () => {});
+describe("there are words guessed", () => {
+  let wrapper;
+  let data;
+
+  beforeEach(() => {
+    data = {
+      guessedWords: [
+        { guessedWord: "train", count: 3 },
+        { guessedWord: "habit", count: 3 },
+        { guessedWord: "party", count: 5 },
+      ],
+    };
+
+    wrapper = setup(data);
+  });
+
+  test("renders without error", () => {
+    const guessedWordsNode = getByAttr(wrapper, "guessed-words");
+    expect(guessedWordsNode.length).toBe(1);
+  });
+  test("correct number of guessed words", () => {
+    const guessedWordNode = getByAttr(wrapper, "guessed-word");
+    expect(guessedWordNode.length).toBe(data.guessedWords.length);
+  });
+});
