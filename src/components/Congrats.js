@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { bool } from "prop-types";
 
 /**
  * Functional react component for congrats message
@@ -11,7 +10,11 @@ import { bool } from "prop-types";
 const Congrats = (props) => {
   let message = null;
   if (props.success) {
-    message = <h1 test-data="component-msg">Congratulations</h1>;
+    message = (
+      <h3 test-data="component-msg" className="alert alert-success">
+        Congratulations
+      </h3>
+    );
   }
 
   return <div test-data="component-congrats">{message}</div>;

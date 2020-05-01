@@ -19,12 +19,15 @@ class GuessedWords extends Component {
     } else {
       content = (
         <div test-data="guessed-words">
-          <table border="1">
-            <tr>
-              <th>Guess</th>
-              <th>Matching Letters</th>
-            </tr>
-            {this.rows}
+          <h3>Words guessed so far</h3>
+          <table className="table table-hover">
+            <thead className="thead-light">
+              <tr>
+                <th>Guess</th>
+                <th>Matching Letters</th>
+              </tr>
+            </thead>
+            <tbody>{this.rows}</tbody>
           </table>
         </div>
       );

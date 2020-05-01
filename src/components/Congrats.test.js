@@ -27,7 +27,7 @@ test("renders when success is true", () => {
   const msg = getByAttr(wrapper, "component-msg");
   expect(msg.length).toBe(1);
 });
-test("does not render when usccess false", () => {
+test("does not render when success false", () => {
   const wrapper = setup({ success: false });
   const msg = getByAttr(wrapper, "component-msg");
   expect(msg.length).toBe(0);
